@@ -1,7 +1,3 @@
-FROM httpd:2.4.33-alpine
-RUN apk update; \
-    apk upgrade;
-# Copy apache vhost file to proxy php requests to php-fpm container
-COPY laravel.apache.conf /usr/local/apache2/conf/laravel.apache.conf
-RUN echo "Include /usr/local/apache2/conf/laravel.apache.conf" \
-    >> /usr/local/apache2/conf/httpd.conf
+FROM webdevops/php-apache:7.2-alpine
+
+COPY vhost.conf /opt/docker/etc/httpd/vhost.conf

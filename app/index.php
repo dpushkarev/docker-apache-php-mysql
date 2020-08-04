@@ -1,2 +1,1 @@
-<?php
-echo 234;
+<?php echo 234;?>
