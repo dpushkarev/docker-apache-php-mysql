@@ -28,6 +28,20 @@ services:
     ports:
       - 3306:3306
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: ${COMPOSE_PROJECT_NAME}_phpmyadmin
+    links:
+      - mysql:db
+    ports:
+      - 8000:80
+    networks:
+      - backend
+    environment:
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+
 networks:
   frontend:
   backend:
